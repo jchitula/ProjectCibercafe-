@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="8º Grupo PRWE PL">
+  <title>CIBERCAFÉ – Área de Gestão</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+<header><div class="container">
+  <img src="img/uzlogo.png" alt="Logo da Universidade Zambeze">
+  <div><h1>CIBERCAFÉ · Área de Gestão</h1><small>Acesso reservado ao gerente</small></div>
+  <nav><a href="index.html">← Voltar ao site</a></nav>
+</div></header>
+
+<main class="container">
+  <section>
+    <h2>Iniciar sessão do gerente</h2>
+    <p>Entre com a senha do gerente para gerir reservas, pagamentos e operações do Cibercafé.</p>
+    <form id="formGerente" class="linha">
+      <div>
+        <label for="senhaGerente">Senha do gerente</label>
+        <input type="password" id="senhaGerente" autocomplete="current-password" required>
+      </div>
+      <div class="acoes-reservas">
+        <button type="submit" id="btnEntrarGerente">Entrar</button>
+        <button type="button" id="btnSairGerente" class="sec" hidden>Terminar sessão</button>
+      </div>
+    </form>
+    <div id="gerenteMensagem" role="status" aria-live="polite"></div>
+  </section>
+
+  <section id="painelGerente" hidden>
+    <h2>Gestão do Cibercafé</h2>
+    <nav class="atalhos-gestao" aria-label="Atalhos da gestão">
+      <a href="#gestao-reservas">Reservas</a>
+      <a href="#gestao-usuarios">Usuários</a>
+      <a href="#gestao-maquinas">Máquinas e fila</a>
+      <a href="#gestao-operacoes">Operações</a>
+      <a href="#gestao-servicos">Serviços</a>
+      <a href="#gestao-relatorios">Relatórios</a>
+    </nav>
+    <div id="gestao-reservas">
+      <h3>Reservas e pagamentos</h3>
+      <p>As reservas são guardadas na base de dados SQLite do servidor.</p>
+      <details class="aviso">
+        <summary>Transferir reservas antigas de uma versão aberta como ficheiro (file://)</summary>
+        <p>Abra index.html como ficheiro no navegador onde as reservas antigas foram criadas, exporte o JSON e importe-o nesta sessão.</p>
+        <button type="button" id="btnExportarReservasAntigas" class="sec">Exportar reservas antigas (.json)</button>
+      </details>
+      <div class="linha">
+        <div>
+          <label for="ficheiroReservasAntigas">Importar ficheiro de reservas antigas (.json)</label>
+          <input type="file" id="ficheiroReservasAntigas" accept=".json,application/json">
+        </div>
+        <div class="acoes-reservas">
+          <button type="button" id="btnImportarReservasAntigas">Importar para SQLite</button>
+        </div>
+      </div>
+      <div class="acoes-reservas">
+        <button type="button" id="btnRelatorioReservas">Descarregar Excel (.xlsx)</button>
+        <button type="button" id="btnRelatorioPdf" class="sec">Imprimir / guardar PDF</button>
+        <button type="button" id="btnActualizarReservas" class="sec">Actualizar lista</button>
+      </div>
+      <div id="reservasMensagem" role="status" aria-live="polite"></div>
+      <div id="listaReservas" class="tabela-scroll"></div>
+    </div>
+
+    <h3>Usuários, máquinas, serviços e relatórios</h3>
+    <div id="msg" class="aviso">Bem-vindo. Registe um usuário para começar.</div>
+
+    <section id="gestao-usuarios">
+      <h2>1. Registar usuário</h2>
+      <form id="formUser">
+        <div class="linha">
+          <div><label>Nome</label><input id="nome" required></div>
+          <div><label>Nº do cartão de crédito</label><input id="cartao" required inputmode="numeric"></div>
+          <div><label>Tipo</label><select id="tipoUser"><option value="casual">Casual</option><option value="associado">Associado</option></select></div>
+        </div>
+        <div class="linha" id="camposAssoc" style="display:none">
+          <div><label>Anos de associação</label><input type="number" id="anos" min="0" value="1"></div>
+          <div><label>Categoria</label><select id="cat"><option>bronze</option><option>prata</option><option>ouro</option></select></div>
+        </div>
+        <button type="submit">Registar e atribuir máquina</button>
+      </form>
+    </section>
+
+    <section id="gestao-maquinas">
+      <h2>2. Máquinas e fila de espera</h2>
+      <div id="painelMaquinas" class="tabela-scroll"></div>
+    </section>
+
+    <section id="gestao-operacoes">
+      <h2>3. Operações sobre um usuário</h2>
+      <label>Usuário</label><select id="selUser"></select>
+      <button id="btnSubir">Subir categoria</button>
+      <button id="btnDescer" class="sec">Descer categoria</button>
+      <button id="btnTotal">Calcular valor a pagar</button>
+      <button id="btnSair" class="sec">Terminar e libertar máquina</button>
+      <div id="resUser"></div>
+    </section>
+
+    <section id="gestao-servicos">
+      <h2>4. Registar serviço</h2>
+      <label>Serviço</label>
+      <select id="tipoServ">
+        <option value="nav">Navegação</option><option value="caf">Cafeteria</option>
+        <option value="grav">Gravação de Discos (só associados)</option><option value="imp">Impressão</option>
+      </select>
+      <div id="camposServ"></div>
+      <button id="btnServ">Adicionar serviço ao usuário</button>
+    </section>
+
+    <section id="gestao-relatorios">
+      <h2>5. Relatórios e estatísticas</h2>
+      <button id="btnRel">Actualizar relatórios</button>
+      <button id="btnSalvar">Salvar associados em ficheiro</button>
+      <div id="relatorios"></div>
+    </section>
+  </section>
+</main>
+
+<footer>© 2026 CIBERCAFÉ · Universidade Zambeze · Área reservada ao gerente</footer>
+<script src="js/site/reservas.js"></script>
+<script src="dados/menu.js"></script>
+<script src="js/sistema/modelos.js"></script>
+<script src="js/sistema/gestor.js"></script>
+<script src="js/sistema/painel.js"></script>
+</body>
+</html>

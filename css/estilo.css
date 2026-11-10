@@ -1,0 +1,51 @@
+/* ===== 1. VARIÁVEIS (cores inspiradas na bandeira de Moçambique) ===== */
+:root{--verde:#007168;--ouro:#fce100;--vermelho:#d21034;--escuro:#12332f;--fundo:#f4f7f6;--borda:#d5e0de}
+
+/* ===== 2. BASE ===== */
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--fundo);color:#222;line-height:1.5}
+h1,h2,h3{color:var(--escuro);margin-top:0}
+a{color:var(--verde)}
+.container{max-width:1100px;margin:auto;padding:1.2rem}
+
+/* ===== 3. CABEÇALHO E MENU ===== */
+header{background:var(--verde);color:#fff;border-bottom:5px solid var(--ouro)}
+header .container{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+header img{height:60px;background:#fff;border-radius:6px;padding:3px}
+header h1{color:#fff;margin:0;font-size:1.5rem}
+header small{opacity:.85}
+nav{margin-left:auto;display:flex;gap:1rem;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;font-weight:600}
+nav a:hover{color:var(--ouro)}
+.atalhos-gestao{margin:0 0 1rem;justify-content:flex-start}
+.atalhos-gestao a{color:var(--verde);border:1px solid var(--borda);border-radius:6px;padding:.35rem .65rem}
+.atalhos-gestao a:hover{color:var(--escuro);background:var(--fundo)}
+
+/* ===== 4. SECÇÕES, CARTÕES E GRELHAS ===== */
+section{background:#fff;border:1px solid var(--borda);border-radius:10px;padding:1.2rem;margin-bottom:1.2rem}
+.grelha{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.cartao{border:1px solid var(--borda);border-left:5px solid var(--verde);border-radius:8px;padding:.9rem;background:#fcfefd}
+.preco{color:var(--vermelho);font-weight:700}
+
+/* ===== 5. FORMULÁRIOS E BOTÕES ===== */
+label{display:block;font-weight:600;margin:.6rem 0 .2rem}
+input,select,textarea{width:100%;padding:.5rem;border:1px solid #aab;border-radius:6px;font:inherit}
+.linha{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem}
+button{background:var(--verde);color:#fff;border:0;padding:.55rem 1rem;border-radius:6px;font-weight:600;cursor:pointer;margin:.6rem .3rem 0 0}
+button:hover{background:var(--escuro)}
+button.sec{background:var(--vermelho)}
+.aviso{background:#fff8d6;border-left:5px solid var(--ouro);padding:.7rem;border-radius:6px;margin:.8rem 0}
+.ok{background:#e3f6ee;border-left:5px solid var(--verde);padding:.8rem;border-radius:6px}
+.reservas-registadas{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--borda)}
+.acoes-reservas{display:flex;flex-wrap:wrap;gap:.4rem}
+[hidden]{display:none!important}
+.btn-pago{font-size:.82rem;white-space:nowrap;margin:0}
+
+/* ===== 6. TABELAS ===== */
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th,td{border:1px solid var(--borda);padding:.4rem .5rem;text-align:left}
+th{background:var(--verde);color:#fff}
+.tabela-scroll{overflow-x:auto}
+
+/* ===== 7. RODAPÉ ===== */
+footer{background:var(--escuro);color:#dfe;text-align:center;padding:1rem;font-size:.9rem;border-top:5px solid var(--ouro)}

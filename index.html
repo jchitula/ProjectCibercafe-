@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="8º Grupo PRWE PL">
+  <title>CIBERCAFÉ – Universidade Zambeze</title>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<!-- ================= CABEÇALHO ================= -->
+<header>
+  <div class="container">
+    <!-- COLOQUE o logo oficial em img/logo-unizambeze.png -->
+    <img src="img/uzlogo.png" alt="Logo da Universidade Zambeze">
+    <div><h1>CIBERCAFÉ</h1><small>Universidade Zambeze · Beira, Moçambique</small></div>
+    <nav>
+      <a href="#info">Informações</a><a href="#servicos">Serviços</a>
+      <a href="#salas">Salas</a><a href="#reserva">Reservar</a>
+      <a href="gestao.html">Área de Gestão</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ================= 1. INFORMAÇÃO GERAL ================= -->
+<section id="info">
+  <h2>Informação Geral</h2>
+  <div class="grelha">
+    <div class="cartao"><h3>Horário</h3>
+      Segunda a Sexta: 07:30 – 21:00<br>Sábado: 08:00 – 18:00<br>Domingo: Fechado</div>
+    <div class="cartao"><h3>Contactos</h3>
+      Endereço: Campus da Universidade Zambeze, Beira, Sofala<br>
+      Telefone: +258 87 209 4660 / +258 84 269 8026<br>E-mail: jesso.chitula@unizambeze.ac.mz</div>
+    <div class="cartao"><h3>Gerente</h3>Jesso e Joao<br><small></small></div>
+  </div>
+</section>
+
+<!-- ================= 2. SERVIÇOS ================= -->
+<section id="servicos">
+  <h2>Serviços e Preços (em Meticais – MT)</h2>
+  <div class="grelha">
+    <div class="cartao"><h3>Navegação na Internet</h3>
+      <p>Preço = horas × 1,5 + KB × 2.</p>
+      <p class="preco">Associados não pagam o multiplicador de tempo.</p></div>
+    <div class="cartao"><h3>Cafeteria</h3>
+      <p>Chá, café, sumos, chamussas, matapa e muito mais. Total dos pratos × 1,5 (taxa de serviço na máquina).</p>
+      <p class="preco">Associados não pagam a taxa de serviço.</p></div>
+    <div class="cartao"><h3>Gravação de Discos</h3>
+      <p>Só para associados. Velocidades 8x, 12x, 16x e 24x. Preço = velocidade ÷ 16 + MB ÷ 700.</p>
+      <p class="preco">Prata e Ouro não pagam a taxa da velocidade.</p></div>
+    <div class="cartao"><h3>Impressão</h3>
+      <p>Jato (qualidade 1) ou Laser (qualidade 2). Preço = nº de palavras × (1,5 + qualidade).</p>
+      <p class="preco">Associados Ouro não pagam a qualidade.</p></div>
+    <div class="cartao"><h3>Reserva de Espaço</h3>
+      <p>Salas para conferências, formações e eventos. Veja as taxas horárias abaixo.</p></div>
+  </div>
+</section>
+
+<!-- ================= 3. SALAS ================= -->
+<section id="salas">
+  <h2>Salas para Actividades</h2>
+  <div class="grelha">
+    <div class="cartao"><h3>Sala de Conferências</h3>
+      <p>Inclui datashow e computador, com benefícios adicionais.</p>
+      <p class="preco">1 500,00 MT / hora</p></div>
+    <div class="cartao"><h3>Sala de Laboratório</h3>
+      <p>Máquinas interligadas e ligadas à Internet. Servidor disponível para executar os serviços solicitados.</p>
+      <p class="preco">2 500,00 MT / hora</p>
+      <small>Serviços de servidor (por hora): Servidor Web 300 MT · Servidor de Ficheiros 200 MT · Servidor de Correio 250 MT</small></div>
+  </div>
+</section>
+
+<!-- ================= 4. RESERVA ONLINE ================= -->
+<section id="reserva">
+  <h2>Reservar Sala</h2>
+  <div class="aviso">A reserva só entra em vigor após o <b>pagamento presencial</b> no Cibercafé.</div>
+  <form id="formReserva">
+    <div class="linha">
+      <div><label for="bi">Nº do Bilhete de Identidade</label><input id="bi" required placeholder="110100000000A"></div>
+      <div><label for="entidade">Entidade representada</label><input id="entidade" required placeholder="Ex.: Escola Secundária da Beira"></div>
+      <div><label for="tipo">Tipo de sala</label>
+        <select id="tipo"><option value="conferencia">Conferência</option><option value="laboratorio">Laboratório</option></select></div>
+    </div>
+    <div class="linha">
+      <div><label for="data">Data</label><input type="date" id="data" required></div>
+      <div><label for="hora">Hora de início</label><input type="time" id="hora" min="07:30" max="20:00" required></div>
+      <div><label for="duracao">Duração (horas)</label><input type="number" id="duracao" min="1" max="8" value="2" required></div>
+    </div>
+    <div id="blocoServidor" style="display:none">
+      <label>Serviços de servidor</label>
+      <label><input type="checkbox" class="srv" value="300" data-n="Servidor Web" style="width:auto"> Servidor Web (300 MT/h)</label>
+      <label><input type="checkbox" class="srv" value="200" data-n="Servidor de Ficheiros" style="width:auto"> Servidor de Ficheiros (200 MT/h)</label>
+      <label><input type="checkbox" class="srv" value="250" data-n="Servidor de Correio" style="width:auto"> Servidor de Correio (250 MT/h)</label>
+    </div>
+    <button type="submit">Confirmar reserva</button>
+  </form>
+  <div id="confirmacao"></div>
+</section>
+</main>
+
+<!-- ================= RODAPÉ ================= -->
+<footer>
+  © 2026 CIBERCAFÉ · Universidade Zambeze – Faculdade de Ciências e Tecnologia<br>
+  Autor: <b>8º Grupo PRWE PL</b> · UC: Programação Web · Docente: MSc. Eng.º Félix Macueia
+</footer>
+
+<script src="js/site/reservas.js"></script>
+</body>
+</html>

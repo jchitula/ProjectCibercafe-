@@ -1,0 +1,5 @@
+gerente.local.json
+dados/reservas.sqlite3
+dados/reservas.sqlite3-shm
+dados/reservas.sqlite3-wal
+__pycache__/
